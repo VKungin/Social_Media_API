@@ -47,11 +47,10 @@ class ProfileViewSet(viewsets.ModelViewSet):
                 "User followed successfully.",
                 status=status.HTTP_200_OK,
             )
-        else:
-            return Response(
-                "You cannot follow yourself.",
-                status=status.HTTP_400_BAD_REQUEST,
-            )
+        return Response(
+            "You cannot follow yourself.",
+            status=status.HTTP_400_BAD_REQUEST,
+        )
 
     @action(detail=True, methods=["post"])
     def unfollow(self, request, pk=None):
