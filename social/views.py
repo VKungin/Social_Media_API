@@ -79,7 +79,7 @@ class PostViewSet(viewsets.ModelViewSet):
 
         hashtags = self.request.query_params.get("hashtags")
 
-        if hashtags:
+        if hashtags is not None:
             hashtags_ids = self._params_to_ints(hashtags)
             queryset = queryset.filter(hashtags__id__in=hashtags_ids)
 
