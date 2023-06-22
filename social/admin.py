@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from wall.models import Profile, Hashtag, Post
+from social.models import Profile, Hashtag, Post
 
 admin.site.register(Profile)
 admin.site.register(Hashtag)

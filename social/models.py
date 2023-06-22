@@ -28,15 +28,17 @@ class Post(models.Model):
 
 class Profile(models.Model):
     user = models.OneToOneField(
-        settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="profile"
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        related_name="profile",
+        unique=True,
     )
-    username = models.CharField(max_length=64, blank=True)
     first_name = models.CharField(max_length=64, blank=True)
     last_name = models.CharField(max_length=64, blank=True)
     bio = models.TextField(blank=True)
-    email = models.EmailField(max_length=254, blank=True)
+    email = models.EmailField(max_length=254, blank=True, null=True)
     follow = models.ManyToManyField(
-        settings.AUTH_USER_MODEL, related_name="user_followers", blank=True
+        settings.AUTH_USER_MODEL, related_name="followers", blank=True
     )
 
     def __str__(self):
